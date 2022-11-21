@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F21C300F-212E-0F4A-EA80-6026E8604A3F}</ProjectGuid>
+    <ProjectGuid>{61D1D70E-4F2B-FD8D-F624-3EDA612714EE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.RenderPipeline.Universal.ShaderLibrary</AssemblyName>
@@ -777,15 +777,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.csproj">
-      <Project>{0DA78A0E-286B-F3F1-D6A8-3837C6FA5BA2}</Project>
+      <Project>{F8B656DF-5A32-BC63-7C0E-262B7402C58F}</Project>
       <Name>Unity.RenderPipelines.Core.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{489AF8BC-E902-9206-49AB-41A4C422A17E}</Project>
+      <Project>{BFAFC85B-C6BA-B2BD-C372-3F41F55A05B0}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{CC941EBD-F33C-66CB-A7CD-215A880D14F6}</Project>
+      <Project>{7790EF00-8DA9-983E-5A56-0D3AFBFC2F68}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
   </ItemGroup>

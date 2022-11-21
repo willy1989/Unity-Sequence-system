@@ -2,14 +2,17 @@ using System.Collections;
 using UnityEngine;
 using Cinemachine;
 
-public class CameraManager : ScriptPlayableInSequence
+public class CameraManager : MonoBehaviour
 {
     [SerializeField] private Animator cameraBlendAnimator;
 
     [SerializeField] private CinemachineStateDrivenCamera stateDrivenCamera;
 
-    private IEnumerator SwitchCameraCoroutine(string triggerName)
+    public IEnumerator SwitchCameraCoroutine(string triggerName)
     {
+        if (stateDrivenCamera.IsBlending == true)
+            yield break;
+
         cameraBlendAnimator.SetTrigger(triggerName);
 
         yield return null;
@@ -18,15 +21,5 @@ public class CameraManager : ScriptPlayableInSequence
         {
             yield return null;
         }
-
-        endOfActionEvent?.Invoke();
-    }
-
-    public void SwitchCamera(string triggerName)
-    {
-        if (stateDrivenCamera.IsBlending == true)
-            return;
-
-        StartCoroutine(SwitchCameraCoroutine(triggerName));
     }
 }
