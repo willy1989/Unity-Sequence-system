@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Sequence system\Sequence.cs" />
     <Compile Include="Assets\Scripts\Sequence system\VFX_SequenceTask.cs" />
+    <Compile Include="Assets\Scripts\Sequence system\ImmediateAction_SequenceTask.cs" />
     <Compile Include="Assets\Scripts\Behaviour scripts\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Behaviour scripts\MessagePrinter.cs" />
     <Compile Include="Assets\Scripts\Behaviour scripts\AnimationPlayer.cs" />
@@ -66,7 +67,7 @@
     <Compile Include="Assets\Scripts\Behaviour scripts\VfxPlayer.cs" />
     <Compile Include="Assets\Scripts\Sequence system\SequenceManager.cs" />
     <Compile Include="Assets\Scripts\Sequence system\Animation_SequenceTask.cs" />
-    <Compile Include="Assets\Scripts\Sequence system\ImmediateAction_SequenceTask.cs" />
+    <Compile Include="Assets\Scripts\Sequence system\Waiter_SequenceTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
