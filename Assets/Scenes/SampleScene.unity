@@ -1337,11 +1337,12 @@ MonoBehaviour:
   - name: start
     sequenceNodes:
     - {fileID: 1432019880}
-    - {fileID: 949269394}
-    - {fileID: 975128344}
+    - {fileID: 1392650865}
     - {fileID: 1847529657}
-    - {fileID: 441422551}
-    - {fileID: 1506031924}
+  - name: end
+    sequenceNodes:
+    - {fileID: 1847529657}
+    - {fileID: 1432019880}
     - {fileID: 1392650865}
 --- !u!4 &1704174394
 Transform:

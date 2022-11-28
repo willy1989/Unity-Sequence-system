@@ -40,8 +40,6 @@ public class SequenceManager : MonoBehaviour
             }
 
             sequenceDictionary.Add(item.Name, item);
-
-            item.SetUpSequenceNodes();
         }
     }
 
@@ -62,6 +60,7 @@ public class SequenceManager : MonoBehaviour
 
         if(sequenceDictionary[name] != null)
         {
+            sequenceDictionary[name].SetUpSequenceNodes();
             sequenceDictionary[name].StartSequence();
         }
     }
