@@ -12,7 +12,7 @@ public class Sequence : MonoBehaviour
 
     private IEnumerator sequenceCoroutine;
 
-    int currentTaskIndex;
+    int currentTaskIndex = 0;
 
     public void StartSequence()
     {
@@ -25,14 +25,14 @@ public class Sequence : MonoBehaviour
 
     private IEnumerator PlaySequences()
     {
-        currentTaskIndex = 0;
-
         while (currentTaskIndex < sequenceTasks.Length)
         {
             yield return StartCoroutine(sequenceTasks[currentTaskIndex].DoTask());
 
             currentTaskIndex++;
         }
+
+        currentTaskIndex = 0;
     }
 
     public void AbortSequence()
@@ -46,6 +46,7 @@ public class Sequence : MonoBehaviour
 
     public void SkipTask()
     {
-        sequenceTasks[currentTaskIndex].AbortTask();
+        if(sequenceCoroutine != null)
+            sequenceTasks[currentTaskIndex].AbortTask();
     }
 }
