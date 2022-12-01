@@ -9,10 +9,6 @@ public class AnimationPlayer : MonoBehaviour
 
     private Action endOfAnimationEvent;
 
-    // https://docs.unity3d.com/ScriptReference/AnimationEvent.html
-    // https://docs.unity3d.com/ScriptReference/AnimationClip.AddEvent.html
-
-
     public void PlayAnimation(string triggerName)
     {
         animator.SetTrigger(triggerName);

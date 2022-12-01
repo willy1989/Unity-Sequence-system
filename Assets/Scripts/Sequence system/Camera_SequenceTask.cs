@@ -8,8 +8,13 @@ public class Camera_SequenceTask : SequenceTask
 
     [SerializeField] private string cameraTriggerName;
 
-    protected override IEnumerator DoTask()
+    public override IEnumerator DoTask()
     {
         yield return StartCoroutine(cameraManager.SwitchCameraCoroutine(cameraTriggerName));
+    }
+
+    public override void AbortTask()
+    {
+        cameraManager.StopCameraBlending();
     }
 }

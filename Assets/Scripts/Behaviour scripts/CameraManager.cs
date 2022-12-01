@@ -8,6 +8,8 @@ public class CameraManager : MonoBehaviour
 
     [SerializeField] private CinemachineStateDrivenCamera stateDrivenCamera;
 
+    [SerializeField] private bool blendingStopped = false;
+
     public IEnumerator SwitchCameraCoroutine(string triggerName)
     {
         if (stateDrivenCamera.IsBlending == true)
@@ -19,7 +21,18 @@ public class CameraManager : MonoBehaviour
 
         while(stateDrivenCamera.IsBlending == true)
         {
+            if(blendingStopped == true)
+            {
+                blendingStopped = false;
+                yield break;
+            }
+
             yield return null;
         }
+    }
+
+    public void StopCameraBlending()
+    {
+        blendingStopped = true;
     }
 }

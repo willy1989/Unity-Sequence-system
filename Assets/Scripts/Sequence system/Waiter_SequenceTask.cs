@@ -7,8 +7,27 @@ public class Waiter_SequenceTask : SequenceTask
     [Range(0.1f, 60f)]
     [SerializeField] private float waitDuration;
 
-    protected override IEnumerator DoTask()
+    private bool taskStopped = false;
+
+    public override void AbortTask()
     {
-        yield return new WaitForSeconds(waitDuration);
+        taskStopped = true;
+    }
+
+    public override IEnumerator DoTask()
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime <= waitDuration)
+        {
+            if (taskStopped == true)
+            {
+                taskStopped = false;
+                yield break;
+            }
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
     }
 }

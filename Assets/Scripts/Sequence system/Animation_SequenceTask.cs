@@ -10,13 +10,15 @@ public class Animation_SequenceTask : SequenceTask
 
     private bool animationEnded = false;
 
-    protected override IEnumerator DoTask()
+    private bool taskAborted = false;
+
+    public override IEnumerator DoTask()
     {
         animationPlayer.RegisterToEndOfAnimationEvent(ToggleAnimationEndedOn);
 
         animationPlayer.PlayAnimation(animationTriggerName);
 
-        while (animationEnded == false)
+        while (animationEnded == false && taskAborted == false)
         {
             yield return null;
         }
@@ -24,10 +26,18 @@ public class Animation_SequenceTask : SequenceTask
         animationPlayer.UnregisterToEndOfAnimationEvent(ToggleAnimationEndedOn);
 
         animationEnded = false;
+
+        if (taskAborted == true)
+            taskAborted = false;
     }
 
     private void ToggleAnimationEndedOn()
     {
         animationEnded = true;
+    }
+
+    public override void AbortTask()
+    {
+        ToggleAnimationEndedOn();
     }
 }
