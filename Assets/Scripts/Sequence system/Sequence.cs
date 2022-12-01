@@ -3,28 +3,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class Sequence
+public class Sequence : MonoBehaviour
 {
     [SerializeField] private string name;
     public string Name => name;
 
-    [SerializeField] private SequenceTask[] sequenceNodes;
+    [SerializeField] private SequenceTask[] sequenceTasks;
 
-    public void SetUpSequenceNodes()
-    {
-        for(int i = 0; i < sequenceNodes.Length-1; i++)
-        {
-            if (sequenceNodes[i] != null)
-                sequenceNodes[i].RegisterToTaskCompletedEvent(sequenceNodes[i+1]);
-        }
-    }
+    private IEnumerator sequenceCoroutine;
+
+    int currentTaskIndex;
 
     public void StartSequence()
     {
-        if(sequenceNodes[0] != null)
+        if (sequenceTasks.Length > 0)
         {
-            sequenceNodes[0].StartTask();
+            sequenceCoroutine = PlaySequences();
+            StartCoroutine(sequenceCoroutine);
         }
+    }
+
+    private IEnumerator PlaySequences()
+    {
+        currentTaskIndex = 0;
+
+        while (currentTaskIndex < sequenceTasks.Length)
+        {
+            yield return StartCoroutine(sequenceTasks[currentTaskIndex].DoTask());
+
+            currentTaskIndex++;
+        }
+    }
+
+    public void AbortSequence()
+    {
+        if(sequenceCoroutine != null)
+        {
+            StopCoroutine(sequenceCoroutine);
+            sequenceTasks[currentTaskIndex].AbortTask();
+        }
+    }
+
+    public void SkipTask()
+    {
+        sequenceTasks[currentTaskIndex].AbortTask();
     }
 }

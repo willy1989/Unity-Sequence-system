@@ -48,20 +48,44 @@ public class SequenceManager : MonoBehaviour
         PlaySequence("start");
     }
 
-    public void PlaySequence(string sequenceName)
+    private bool ValideSequenceName(string sequenceName)
     {
-        string name = sequenceName.ToLower().Trim();
+        sequenceName = sequenceName.ToLower().Trim();
 
-        if(sequenceDictionary.ContainsKey(name) == false)
+        if (sequenceDictionary.ContainsKey(sequenceName) == false)
         {
-            throw new ArgumentException("There are no sequences matching the name " + name + ". " +
+            throw new ArgumentException("There are no sequences matching the name " + sequenceName + ". " +
                                         "Please input a correct name.");
         }
 
-        if(sequenceDictionary[name] != null)
+        return true;
+    }
+
+    public void PlaySequence(string sequenceName)
+    {
+        if(ValideSequenceName(sequenceName) == true && 
+           sequenceDictionary[sequenceName] != null)
         {
-            sequenceDictionary[name].SetUpSequenceNodes();
-            sequenceDictionary[name].StartSequence();
+            sequenceDictionary[sequenceName].StartSequence();
+        }
+    }
+
+
+    public void AbortSequence(string sequenceName)
+    {
+        if (ValideSequenceName(sequenceName) == true && 
+            sequenceDictionary[sequenceName] != null)
+        {
+            sequenceDictionary[sequenceName].AbortSequence();
+        }
+    }
+
+    public void SkipCurrentTask(string sequenceName)
+    {
+        if (ValideSequenceName(sequenceName) == true && 
+            sequenceDictionary[sequenceName] != null)
+        {
+            sequenceDictionary[sequenceName].SkipTask();
         }
     }
 }

@@ -7,7 +7,12 @@ public class ImmediateAction_SequenceTask : SequenceTask
 {
     [SerializeField] private UnityEvent unityEvent;
 
-    protected override IEnumerator DoTask()
+    public override void AbortTask()
+    {
+        //
+    }
+
+    public override IEnumerator DoTask()
     {
         unityEvent?.Invoke();
 

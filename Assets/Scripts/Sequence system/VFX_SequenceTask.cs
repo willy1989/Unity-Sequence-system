@@ -8,7 +8,12 @@ public class VFX_SequenceTask : SequenceTask
 
     [SerializeField] private float vfxDuration;
 
-    protected override IEnumerator DoTask()
+    public override void AbortTask()
+    {
+        vfxPlayer.StopVFX();
+    }
+
+    public override IEnumerator DoTask()
     {
         yield return StartCoroutine(vfxPlayer.PlayVfxForXSeconds(vfxDuration));
     }
