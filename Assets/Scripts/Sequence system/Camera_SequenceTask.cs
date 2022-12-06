@@ -10,7 +10,7 @@ public class Camera_SequenceTask : SequenceTask
 
     public override IEnumerator DoTask()
     {
-        yield return StartCoroutine(cameraManager.SwitchCameraCoroutine(cameraTriggerName));
+        yield return cameraManager.SwitchCameraCoroutine(cameraTriggerName);
     }
 
     public override void AbortTask()

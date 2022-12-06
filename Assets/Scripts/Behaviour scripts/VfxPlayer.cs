@@ -9,21 +9,20 @@ public class VfxPlayer : MonoBehaviour
 
     private bool vfxStopped = false;
 
+
     public IEnumerator PlayVfxForXSeconds(float duration)
     {
         visualEffect.Play();
 
-        float elapsedTime = 0f;
-
-        while(elapsedTime <= duration)
+        while (duration > 0)
         {
-            if(vfxStopped == true)
+            if (vfxStopped == true)
             {
                 vfxStopped = false;
                 yield break;
             }
-
-            elapsedTime += Time.deltaTime;
+                
+            duration -= Time.deltaTime;
             yield return null;
         }
 
@@ -33,6 +32,7 @@ public class VfxPlayer : MonoBehaviour
     public void StopVFX()
     {
         visualEffect.Stop();
+
         vfxStopped = true;
     }
 }

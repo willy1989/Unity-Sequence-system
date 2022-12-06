@@ -15,6 +15,6 @@ public class VFX_SequenceTask : SequenceTask
 
     public override IEnumerator DoTask()
     {
-        yield return StartCoroutine(vfxPlayer.PlayVfxForXSeconds(vfxDuration));
+        yield return vfxPlayer.PlayVfxForXSeconds(vfxDuration);
     }
 }

@@ -48,7 +48,7 @@ public class SequenceManager : MonoBehaviour
         PlaySequence("start");
     }
 
-    private bool ValideSequenceName(string sequenceName)
+    private bool Validate(string sequenceName)
     {
         sequenceName = sequenceName.ToLower().Trim();
 
@@ -63,7 +63,7 @@ public class SequenceManager : MonoBehaviour
 
     public void PlaySequence(string sequenceName)
     {
-        if(ValideSequenceName(sequenceName) == true && 
+        if(Validate(sequenceName) == true && 
            sequenceDictionary[sequenceName] != null)
         {
             sequenceDictionary[sequenceName].StartSequence();
@@ -73,7 +73,7 @@ public class SequenceManager : MonoBehaviour
 
     public void AbortSequence(string sequenceName)
     {
-        if (ValideSequenceName(sequenceName) == true && 
+        if (Validate(sequenceName) == true && 
             sequenceDictionary[sequenceName] != null)
         {
             sequenceDictionary[sequenceName].AbortSequence();
@@ -82,7 +82,7 @@ public class SequenceManager : MonoBehaviour
 
     public void SkipCurrentTask(string sequenceName)
     {
-        if (ValideSequenceName(sequenceName) == true && 
+        if (Validate(sequenceName) == true && 
             sequenceDictionary[sequenceName] != null)
         {
             sequenceDictionary[sequenceName].SkipTask();

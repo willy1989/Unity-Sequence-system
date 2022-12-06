@@ -27,7 +27,7 @@ public class Sequence : MonoBehaviour
     {
         while (currentTaskIndex < sequenceTasks.Length)
         {
-            yield return StartCoroutine(sequenceTasks[currentTaskIndex].DoTask());
+            yield return sequenceTasks[currentTaskIndex].DoTask();
 
             currentTaskIndex++;
         }
